@@ -312,6 +312,24 @@
       border-top: 1px solid rgba(182, 31, 34, 0.08);
     }
 
+    .subsection {
+      padding-top: 18px;
+    }
+
+    .subsection + .subsection {
+      margin-top: 16px;
+      border-top: 1px solid rgba(182, 31, 34, 0.08);
+    }
+
+    .subsection-title {
+      margin: 0 0 12px;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
     .links-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -465,80 +483,54 @@
     </div>
 
     <section class="cards">
-      <details class="card" id="directivos" open>
+      <details class="card" id="promocion" open>
         <summary class="card-summary">
           <div class="card-head">
-            <h3>Directivos</h3>
+            <h3>Promocion</h3>
             <div class="card-meta">
-              <span class="badge">8 accesos</span>
+              <span class="badge">14 accesos</span>
               <span class="chevron">⌄</span>
             </div>
           </div>
         </summary>
         <div class="card-panel">
-          <div class="links-grid">
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/9e22f6e8-0e1a-4c7f-a559-7745a1833108?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>Portal Tableros BI</strong></a>
-            <a class="link-btn" href="https://tableros.us.qlikcloud.com/insights/home" target="_blank" rel="noopener noreferrer"><strong>Qlik Cloud Insights</strong></a>
-            <a class="link-btn" href="https://siegfried-bi.github.io/Marcas-CardioMetabolismo/" target="_blank" rel="noopener noreferrer"><strong>Tablero Marcas</strong></a>
-            <a class="link-btn" href="https://siegfried-bi.github.io/Precios/" target="_blank" rel="noopener noreferrer"><strong>Precios</strong></a>
-            <a class="link-btn" href="https://siegfried-bi.github.io/ComercialDP/" target="_blank" rel="noopener noreferrer"><strong>Comercial DP</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/view?r=eyJrIjoiOWI3MGE2ZjItNDU2OS00NjM2LTg5ZTktZTg2OWI3MGY2NTgxIiwidCI6IjE3NDhkYWVjLTQ5NmYtNDk5Zi05MmQxLWUxZmYwZDhmNTYzMSIsImMiOjR9" target="_blank" rel="noopener noreferrer"><strong>REM</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/view?r=eyJrIjoiNDFkMDdlYTUtNzc3OS00YmI3LWJiNGYtOTMyZTMxYTU5MmNjIiwidCI6IjE3NDhkYWVjLTQ5NmYtNDk5Zi05MmQxLWUxZmYwZDhmNTYzMSIsImMiOjR9" target="_blank" rel="noopener noreferrer"><strong>TGP</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/view?r=eyJrIjoiZTdmYTgxYzgtYTA0Mi00MGFlLWJiNjItYjU1ZDFhYTA1OTk1IiwidCI6IjE3NDhkYWVjLTQ5NmYtNDk5Zi05MmQxLWUxZmYwZDhmNTYzMSIsImMiOjR9" target="_blank" rel="noopener noreferrer"><strong>Venta interna</strong></a>
-          </div>
-        </div>
-      </details>
-
-      <details class="card" id="regional">
-        <summary class="card-summary">
-          <div class="card-head">
-            <h3>Jefe regional</h3>
-            <div class="card-meta">
-              <span class="badge">8 accesos</span>
-              <span class="chevron">⌄</span>
+          <div class="subsection">
+            <div class="subsection-title">Gerente regional</div>
+            <div class="links-grid">
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/9b0ab00c-8eae-4757-ad96-3ea15577975a/36dd0c24dcde1c9b6a3f?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>REM</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/2013aca2-1d18-4043-bd71-ddb042aebd6f/f69527dca5dcf40e339a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>TGP</strong></a>
+              <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Venta x territorio (DDD)</strong></a>
+              <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Recetas (Closeup)</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/63143753-f648-4a3b-a016-5a61b01ca896/4195379fd551ed390669?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>ROI (inversiones)</strong></a>
+              <span class="placeholder-btn"><strong>Cruce de medicos · por mail</strong></span>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/659142db-25d1-4871-9cbf-4745464fba73/1e092e3f250710490e28?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>ABC</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/7dc51dca-b619-4d79-8ebe-a88257c004f9/cdf86f0fb8ff2df46fdc?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>Bonos PAP</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/1cf16fac-e1df-4565-9645-1cd0b6a5be88/03a5be5bf3a0229a1e5a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>KPI Promocion</strong></a>
             </div>
           </div>
-        </summary>
-        <div class="card-panel">
-          <div class="links-grid">
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/9b0ab00c-8eae-4757-ad96-3ea15577975a/36dd0c24dcde1c9b6a3f?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>REM</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/2013aca2-1d18-4043-bd71-ddb042aebd6f/f69527dca5dcf40e339a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>TGP</strong></a>
-            <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Venta x territorio (DDD)</strong></a>
-            <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Recetas (Closeup)</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/63143753-f648-4a3b-a016-5a61b01ca896/4195379fd551ed390669?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>ROI (inversiones)</strong></a>
-            <span class="placeholder-btn"><strong>Cruce de medicos · por mail</strong></span>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/659142db-25d1-4871-9cbf-4745464fba73/1e092e3f250710490e28?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>ABC</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/7dc51dca-b619-4d79-8ebe-a88257c004f9/cdf86f0fb8ff2df46fdc?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>Bonos PAP</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/1cf16fac-e1df-4565-9645-1cd0b6a5be88/03a5be5bf3a0229a1e5a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>KPI Promocion</strong></a>
-          </div>
-        </div>
-      </details>
-
-      <details class="card" id="equipo">
-        <summary class="card-summary">
-          <div class="card-head">
-            <h3>Jefe de equipo</h3>
-            <div class="card-meta">
-              <span class="badge">5 accesos</span>
-              <span class="chevron">⌄</span>
+          <div class="subsection">
+            <div class="subsection-title">Jefes de equipo</div>
+            <div class="links-grid">
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/2013aca2-1d18-4043-bd71-ddb042aebd6f/f69527dca5dcf40e339a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>TGP</strong></a>
+              <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Venta x territorio (DDD)</strong></a>
+              <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Recetas (Closeup)</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/1cf16fac-e1df-4565-9645-1cd0b6a5be88/03a5be5bf3a0229a1e5a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>KPI Promocion</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/63143753-f648-4a3b-a016-5a61b01ca896/4195379fd551ed390669?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>ABC</strong></a>
             </div>
           </div>
-        </summary>
-        <div class="card-panel">
-          <div class="links-grid">
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/2013aca2-1d18-4043-bd71-ddb042aebd6f/f69527dca5dcf40e339a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>TGP</strong></a>
-            <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Venta x territorio (DDD)</strong></a>
-            <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/11a25fee-9c18-4028-9698-c03b29d91725/overview/hubUrl/%2Finsights%2Fhome" target="_blank" rel="noopener noreferrer"><strong>Recetas (Closeup)</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/1cf16fac-e1df-4565-9645-1cd0b6a5be88/03a5be5bf3a0229a1e5a?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>KPI Promocion</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/63143753-f648-4a3b-a016-5a61b01ca896/4195379fd551ed390669?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>ABC</strong></a>
+          <div class="subsection">
+            <div class="subsection-title">APM</div>
+            <div class="links-grid">
+              <span class="placeholder-btn"><strong>A desarrollar</strong></span>
+            </div>
           </div>
         </div>
       </details>
 
-      <details class="card" id="producto">
+      <details class="card" id="mkt">
         <summary class="card-summary">
           <div class="card-head">
-            <h3>Jefe de producto</h3>
+            <h3>MKT</h3>
             <div class="card-meta">
               <span class="badge">4 accesos</span>
               <span class="chevron">⌄</span>
@@ -546,30 +538,60 @@
           </div>
         </summary>
         <div class="card-panel">
-          <div class="links-grid">
-            <a class="link-btn" href="https://siegfried-bi.github.io/Marcas-CardioMetabolismo/" target="_blank" rel="noopener noreferrer"><strong>Tablero Marcas</strong></a>
-            <a class="link-btn" href="https://drive.google.com/file/d/1x5VMmJr4ky34Cp3NbPNgloMGKlHMzFoe/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><strong>Ateneo</strong></a>
-            <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/9b0ab00c-8eae-4757-ad96-3ea15577975a/36dd0c24dcde1c9b6a3f?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>REM</strong></a>
-            <a class="link-btn" href="https://iqpmlatam.imshealth.com/UI/default.aspx" target="_blank" rel="noopener noreferrer"><strong>IQPM Latam</strong></a>
+          <div class="subsection">
+            <div class="subsection-title">Gerente y jefes de producto</div>
+            <div class="links-grid">
+              <a class="link-btn" href="https://siegfried-bi.github.io/Marcas-CardioMetabolismo/" target="_blank" rel="noopener noreferrer"><strong>Tablero Marcas</strong></a>
+              <a class="link-btn" href="https://drive.google.com/file/d/1x5VMmJr4ky34Cp3NbPNgloMGKlHMzFoe/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><strong>Ateneo</strong></a>
+              <a class="link-btn" href="https://app.powerbi.com/groups/me/apps/2149dadf-6fbf-4a99-86cd-039532cb1c41/reports/9b0ab00c-8eae-4757-ad96-3ea15577975a/36dd0c24dcde1c9b6a3f?ctid=1748daec-496f-499f-92d1-e1ff0d8f5631&amp;experience=power-bi" target="_blank" rel="noopener noreferrer"><strong>REM</strong></a>
+              <a class="link-btn" href="https://iqpmlatam.imshealth.com/UI/default.aspx" target="_blank" rel="noopener noreferrer"><strong>IQPM Latam</strong></a>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="comercial">
+        <summary class="card-summary">
+          <div class="card-head">
+            <h3>Comercial</h3>
+            <div class="card-meta">
+              <span class="badge">3 accesos</span>
+              <span class="chevron">⌄</span>
+            </div>
+          </div>
+        </summary>
+        <div class="card-panel">
+          <div class="subsection">
+            <div class="subsection-title">Gerente y analistas</div>
+            <div class="links-grid">
+              <a class="link-btn" href="https://tableros.us.qlikcloud.com/sense/app/a3a4907d-9340-46d0-93c4-f2ce7f004ff0/sheet/dLdkBej/state/analysis/hubUrl/undefined" target="_blank" rel="noopener noreferrer"><strong>Venta fisica y ponderada (DDD)</strong></a>
+              <span class="placeholder-btn"><strong>Cubo comercial · en desarrollo</strong></span>
+              <span class="placeholder-btn"><strong>Desplazamiento · en desarrollo</strong></span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="operaciones">
+        <summary class="card-summary">
+          <div class="card-head">
+            <h3>Gerencia de operaciones</h3>
+            <div class="card-meta">
+              <span class="badge">1 pendiente</span>
+              <span class="chevron">⌄</span>
+            </div>
+          </div>
+        </summary>
+        <div class="card-panel">
+          <div class="subsection">
+            <div class="subsection-title">Fran</div>
+            <div class="links-grid">
+              <span class="placeholder-btn"><strong>A definir con Fer Bonet</strong></span>
+            </div>
           </div>
         </div>
       </details>
     </section>
   </main>
-  <script>
-    const profileCards = document.querySelectorAll('.card');
-
-    profileCards.forEach((card) => {
-      card.addEventListener('toggle', () => {
-        if (!card.open) return;
-
-        profileCards.forEach((otherCard) => {
-          if (otherCard !== card) {
-            otherCard.open = false;
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>
