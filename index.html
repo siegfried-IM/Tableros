@@ -578,6 +578,8 @@
     }
 
     /* --- Responsive ------------------------------------------ */
+    html, body { overflow-x: hidden; }
+
     @media (max-width: 1100px) {
       .links-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
     }
@@ -610,24 +612,30 @@
     @media (max-width: 620px) {
       body { font-size: 13.5px; }
 
-      .topbar-inner { min-height: 56px; }
-      .brand { gap: 10px; }
-      .brand-logo { height: 38px; }
-      .brand-copy { padding-left: 10px; }
-      .brand-copy strong { font-size: 0.88rem; }
+      .topbar { box-shadow: 0 1px 0 rgba(14, 26, 43, 0.02), 0 2px 8px rgba(14, 26, 43, 0.05); }
+      .topbar-inner { min-height: 56px; gap: 10px; width: min(1240px, calc(100% - 20px)); }
+      .brand { gap: 10px; min-width: 0; flex: 1; }
+      .brand-logo { height: 36px; flex-shrink: 0; }
+      .brand-copy { padding-left: 10px; min-width: 0; overflow: hidden; }
+      .brand-copy strong { font-size: 0.86rem; }
+      .brand-copy span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .topbar-meta { flex-shrink: 0; font-size: 0.6rem; letter-spacing: 0.18em; }
 
-      .shell { margin: 16px auto 28px; }
+      .shell { width: min(1240px, calc(100% - 20px)); margin: 14px auto 28px; }
 
       .hero { padding: 18px 18px; border-radius: var(--r-lg); }
-      .hero h1 { font-size: 1.55rem; line-height: 1.1; }
+      .hero h1 { font-size: 1.55rem; line-height: 1.1; margin: 6px 0 8px; }
       .hero-lede { margin-bottom: 6px; font-size: 0.82rem; }
+
+      .section-intro { margin: 18px 2px 10px; }
 
       .profile-card { border-radius: var(--r-md); }
       .profile-summary {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: auto 1fr auto;
         grid-template-rows: auto auto;
         padding: 12px 14px;
-        gap: 8px 12px;
+        gap: 4px 12px;
+        align-items: center;
       }
       .profile-number {
         grid-column: 1;
@@ -638,30 +646,88 @@
         border-right: 1px solid var(--line);
         border-bottom: 0;
         padding: 0 10px 0 0;
+        font-size: 1.15rem;
+        min-width: 30px;
       }
-      .profile-title { grid-column: 2; grid-row: 1; }
-      .profile-meta { grid-column: 2; grid-row: 2; justify-self: start; gap: 8px; }
-      .badge { padding: 4px 8px; font-size: 0.58rem; letter-spacing: 0.16em; }
-      .chevron { width: 22px; height: 22px; }
+      .profile-title { grid-column: 2; grid-row: 1; min-width: 0; }
+      .profile-title h3 { font-size: 1.05rem; }
+      .profile-title p { font-size: 0.6rem; margin-top: 2px; }
+      .profile-meta {
+        grid-column: 2 / span 2;
+        grid-row: 2;
+        justify-self: start;
+        gap: 8px;
+        align-items: center;
+      }
+      .badge { padding: 4px 9px; font-size: 0.56rem; letter-spacing: 0.16em; }
+      .chevron {
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: end;
+        align-self: center;
+        width: 30px;
+        height: 30px;
+      }
+      .chevron svg { width: 12px; height: 12px; }
+
+      .subsection { padding: 10px 0 2px; }
+      .subsection-head { gap: 10px; margin-bottom: 8px; }
+      .subsection-head h4 { font-size: 0.58rem; letter-spacing: 0.2em; }
+      .subsection-head .count { font-size: 0.74rem; }
 
       .links-grid { grid-template-columns: 1fr; gap: 8px; }
-      .link-card { padding: 10px 12px; grid-template-columns: 28px 1fr auto; gap: 10px; }
-      .link-card .icon { width: 28px; height: 28px; }
-      .link-card .icon svg { width: 13px; height: 13px; }
-      .link-card .copy strong { font-size: 0.82rem; }
-      .link-card .copy span { font-size: 0.56rem; }
-
-      .subsection-head h4 { font-size: 0.6rem; letter-spacing: 0.22em; }
-      .subsection-head .count { font-size: 0.78rem; }
+      .link-card {
+        padding: 12px;
+        grid-template-columns: 32px 1fr auto;
+        gap: 12px;
+        min-height: 48px;
+      }
+      .link-card .icon { width: 32px; height: 32px; }
+      .link-card .icon svg { width: 14px; height: 14px; }
+      .link-card .copy { min-width: 0; }
+      .link-card .copy strong {
+        font-size: 0.86rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .link-card .copy span { font-size: 0.58rem; }
+      .link-card .arrow { width: 24px; height: 24px; }
 
       .footer { flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 20px; padding: 12px 4px; }
       .footer em { font-size: 0.82rem; }
     }
 
-    @media (max-width: 380px) {
-      .topbar-meta span:not(.pill):not(.dot) { font-size: 0.6rem; letter-spacing: 0.16em; }
-      .brand-copy span { display: none; }
+    @media (max-width: 420px) {
+      .topbar-inner { gap: 8px; }
+      .brand-logo { height: 32px; }
+      .brand-copy { padding-left: 8px; }
+      .brand-copy strong { font-size: 0.8rem; }
+      .brand-copy span { font-size: 0.54rem; letter-spacing: 0.18em; }
+      .topbar-meta { font-size: 0.56rem; letter-spacing: 0.14em; }
+
+      .hero { padding: 16px 14px; }
       .hero h1 { font-size: 1.35rem; }
+      .kicker { font-size: 0.54rem; letter-spacing: 0.2em; }
+
+      .profile-summary { padding: 10px 12px; gap: 4px 10px; }
+      .profile-title h3 { font-size: 0.98rem; }
+      .profile-number { font-size: 1rem; min-width: 26px; padding-right: 8px; }
+      .profile-body { padding: 0 12px 12px; }
+
+      .link-card .copy strong { font-size: 0.82rem; }
+    }
+
+    @media (max-width: 340px) {
+      .brand-copy span { display: none; }
+      .hero h1 { font-size: 1.2rem; }
+      .profile-title p { display: none; }
+    }
+
+    /* Improve tap feedback on touch devices */
+    @media (hover: none) {
+      .link-card:active { transform: scale(0.98); }
+      .profile-summary:active { background: rgba(164, 52, 58, 0.03); }
     }
 
     @media print {
