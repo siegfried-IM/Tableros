@@ -1138,13 +1138,14 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
 /* --------------------------------------------------------------------------
    6 · Accesibilidad, mobile, impresión
    -------------------------------------------------------------------------- */
+/* Windows trae los efectos de animación apagados en muchos equipos corporativos,
+   así que esta consulta se cumple sin que nadie la haya pedido y dejaba la
+   portada entera quieta, logo incluido. En vez de apagar, se calma: las entradas
+   corren una sola vez y duran menos de 1,5 s, así que quedan; lo único perpetuo
+   —el campo de sierpes— va mucho más lento y más tenue.
+   Para el apagado total sigue estando html.sgs-no-motion, acá abajo. */
 @media (prefers-reduced-motion: reduce) {
-  .sgs-telon__masa, .sgs-telon__franja, .sgs-sierpe,
-  .sgs-logo__placa, .sgs-logo__placa::before {
-    animation: none !important; opacity: 1 !important; transform: none !important;
-  }
-  .sgs-telon__franja { opacity: .8 !important; }
-  .sgs-logo__placa::before { opacity: 0 !important; }
+  .sgs-sierpe { animation-duration: calc(var(--p-dur, 18s) * 2.5) !important; --p-op: .42; }
 }
 html.sgs-no-motion .sgs-telon__masa,
 html.sgs-no-motion .sgs-telon__franja,
@@ -1319,14 +1320,9 @@ html.sgs-no-motion .sgs-logo__placa::before { opacity: 0 !important; }
 /* --------------------------------------------------------------------------
    Accesibilidad e impresión
    -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  [data-sgs-abre], [data-sgs-abre-after]::after,
-  [data-sgs-corre] > span, [data-sgs-corre] > img,
-  [data-sgs-sube], [data-sgs-asoma], .sgs-filete--vivo::after {
-    animation: none !important; opacity: 1 !important; transform: none !important;
-  }
-  .sgs-filete--vivo::after { opacity: 0 !important; }
-}
+/* La entrada de la cabecera corre una sola vez y termina antes del segundo:
+   no es movimiento perpetuo, así que no se apaga. El apagado total queda en
+   html.sgs-no-motion. */
 html.sgs-no-motion [data-sgs-abre],
 html.sgs-no-motion [data-sgs-abre-after]::after,
 html.sgs-no-motion [data-sgs-corre] > span,
@@ -1434,9 +1430,9 @@ body { margin: 0; color: #2C2426; font-family: var(--serif); -webkit-font-smooth
             letter-spacing: 0; text-transform: none; color: rgba(255,255,255,.62); }
 .pie__der { margin-left: auto; }
 
-@media (prefers-reduced-motion: reduce) {
-  .acceso { animation: none; }
-}
+/* El escalonado de las tarjetas dura 380 ms y corre una vez: tampoco se apaga.
+   Con html.sgs-no-motion sí queda quieto. */
+html.sgs-no-motion .acceso { animation: none; }
 </style>
 </head>
 
