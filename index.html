@@ -1015,7 +1015,11 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
 .sgs-sierpe {
   position: absolute;
   width: var(--p-tam, 24px); height: var(--p-tam, 24px);
-  animation: sgs-p-deriva var(--p-dur, 18s) ease-in-out infinite;
+  /* Los ciclos del kit (12-25 s) dan unos 10 px/s: técnicamente se mueven, a la
+     vista están quietas. Se recortan a poco más de un tercio y la deriva pasa a
+     lineal — con ease-in-out la partícula se frena en las puntas del ciclo, que
+     es justo cuando uno la está mirando. */
+  animation: sgs-p-deriva calc(var(--p-dur, 18s) * .38) linear infinite;
   animation-delay: var(--p-delay, 0s);
   transform: translateZ(0);
 }
@@ -1037,7 +1041,7 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
   0%   { transform: translateZ(0) scale(.92); opacity: 0; }
   14%  { opacity: var(--p-op, .72); }
   78%  { opacity: var(--p-op, .72); }
-  100% { transform: translate3d(var(--p-x,20px), var(--p-y,-200px), 0) scale(1.07); opacity: 0; }
+  100% { transform: translate3d(calc(var(--p-x,20px) * 2.2), calc(var(--p-y,-200px) * 1.5), 0) scale(1.07); opacity: 0; }
 }
 
 /* La hoja crema tapa del 12% al 88% del ancho, así que el campo vive en las
@@ -1145,7 +1149,11 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
    —el campo de sierpes— va mucho más lento y más tenue.
    Para el apagado total sigue estando html.sgs-no-motion, acá abajo. */
 @media (prefers-reduced-motion: reduce) {
-  .sgs-sierpe { animation-duration: calc(var(--p-dur, 18s) * 2.5) !important; --p-op: .42; }
+  /* Ralentizar acá fue un error: sobre ciclos ya largos daba un recorrido de
+     30-60 s, o sea unos 4 px/s, y el campo se leía congelado. La atenuación
+     honesta es de opacidad, no de velocidad: una partícula media que se mueve
+     molesta menos que una lenta que obliga a fijar la vista para notarla. */
+  .sgs-sierpe { --p-op: .5; }
 }
 html.sgs-no-motion .sgs-telon__masa,
 html.sgs-no-motion .sgs-telon__franja,
