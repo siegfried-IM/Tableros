@@ -1024,35 +1024,55 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
   background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M7 28 C7 20 15 22 16.5 16 C18 10 25 12 25 4%22 fill=%22none%22 stroke=%22%2523ffffff%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: center; background-size: contain;
   transform: rotate(var(--p-rot, 0deg));
-  opacity: .34;
+  /* La opacidad la maneja sola la animación vía --p-op: si además se atenúa
+     acá, los dos valores se multiplican y el campo desaparece. */
+  opacity: 1;
 }
 /* Curvatura alternada: el campo no se lee como un solo sello repetido. */
 .sgs-sierpe:nth-child(3n)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M5 27 C5 17 13 21 17 15 C21 9 27 13 28 5%22 fill=%22none%22 stroke=%22%2523ffffff%22 stroke-width=%222.1%22 stroke-linecap=%22round%22/%3E%3C/svg%3E"); }
 
+/* Fundido en los dos extremos del ciclo. Sin esto el salto del loop se ve,
+   y se ve más cuanto más opaca es la partícula. */
 @keyframes sgs-p-deriva {
-  0%   { transform: translateZ(0) scale(.95); opacity: .35; }
-  40%  { opacity: .62; }
-  100% { transform: translate3d(var(--p-x,18px), var(--p-y,-120px), 0) scale(1.05); opacity: .42; }
+  0%   { transform: translateZ(0) scale(.92); opacity: 0; }
+  14%  { opacity: var(--p-op, .72); }
+  78%  { opacity: var(--p-op, .72); }
+  100% { transform: translate3d(var(--p-x,20px), var(--p-y,-200px), 0) scale(1.07); opacity: 0; }
 }
 
-.sgs-sierpe:nth-child(1) { --p-tam:16px; --p-dur:12s; --p-delay:-2s; left:6%; top:16%; --p-x:18px; --p-y:-110px; --p-rot:28deg; }
-.sgs-sierpe:nth-child(2) { --p-tam:28px; --p-dur:18s; --p-delay:-6s; left:14%; top:64%; --p-x:-12px; --p-y:-140px; --p-rot:41deg; }
-.sgs-sierpe:nth-child(3) { --p-tam:20px; --p-dur:15s; --p-delay:-4s; left:24%; top:36%; --p-x:26px; --p-y:-120px; --p-rot:28deg; }
-.sgs-sierpe:nth-child(4) { --p-tam:36px; --p-dur:22s; --p-delay:-10s; left:34%; top:78%; --p-x:-20px; --p-y:-180px; --p-rot:28deg; }
-.sgs-sierpe:nth-child(5) { --p-tam:18px; --p-dur:16s; --p-delay:-3s; left:42%; top:20%; --p-x:20px; --p-y:-130px; --p-rot:41deg; }
-.sgs-sierpe:nth-child(6) { --p-tam:26px; --p-dur:24s; --p-delay:-8s; left:52%; top:52%; --p-x:-30px; --p-y:-160px; --p-rot:63deg; }
-.sgs-sierpe:nth-child(7) { --p-tam:14px; --p-dur:13s; --p-delay:-5s; left:62%; top:24%; --p-x:16px; --p-y:-120px; --p-rot:-12deg; }
-.sgs-sierpe:nth-child(8) { --p-tam:32px; --p-dur:20s; --p-delay:-7s; left:70%; top:84%; --p-x:24px; --p-y:-190px; --p-rot:-24deg; }
-.sgs-sierpe:nth-child(9) { --p-tam:40px; --p-dur:26s; --p-delay:-11s; left:78%; top:10%; --p-x:-18px; --p-y:-150px; --p-rot:41deg; }
-.sgs-sierpe:nth-child(10) { --p-tam:22px; --p-dur:17s; --p-delay:-9s; left:88%; top:70%; --p-x:16px; --p-y:-160px; --p-rot:28deg; }
-.sgs-sierpe:nth-child(11) { --p-tam:52px; --p-dur:28s; --p-delay:-12s; left:8%; top:86%; --p-x:20px; --p-y:-220px; --p-rot:63deg; }
-.sgs-sierpe:nth-child(12) { --p-tam:12px; --p-dur:11s; --p-delay:-1s; left:18%; top:8%; --p-x:-10px; --p-y:-90px; --p-rot:-24deg; }
-.sgs-sierpe:nth-child(13) { --p-tam:30px; --p-dur:21s; --p-delay:-14s; left:46%; top:88%; --p-x:-16px; --p-y:-200px; --p-rot:-38deg; }
-.sgs-sierpe:nth-child(14) { --p-tam:24px; --p-dur:19s; --p-delay:-6s; left:56%; top:14%; --p-x:18px; --p-y:-140px; --p-rot:28deg; }
-.sgs-sierpe:nth-child(15) { --p-tam:38px; --p-dur:25s; --p-delay:-9s; left:66%; top:66%; --p-x:-24px; --p-y:-190px; --p-rot:0deg; }
-.sgs-sierpe:nth-child(16) { --p-tam:14px; --p-dur:13s; --p-delay:-4s; left:74%; top:40%; --p-x:12px; --p-y:-110px; --p-rot:-24deg; }
-.sgs-sierpe:nth-child(17) { --p-tam:26px; --p-dur:22s; --p-delay:-7s; left:84%; top:28%; --p-x:-14px; --p-y:-150px; --p-rot:-38deg; }
-.sgs-sierpe:nth-child(18) { --p-tam:44px; --p-dur:30s; --p-delay:-15s; left:92%; top:48%; --p-x:22px; --p-y:-210px; --p-rot:41deg; }
+/* La hoja crema tapa del 12% al 88% del ancho, así que el campo vive en las
+   tres bandas que quedan libres: la cabecera y los dos márgenes. En la
+   cabecera se esquiva el título y se ocupa el hueco entre éste y el año. */
+.sgs-sierpe:nth-child(1)  { --p-tam:26px; --p-dur:13s; --p-delay:-2s;  left:20%; top:1%;  --p-x:16px;  --p-y:-150px; --p-rot:28deg;  --p-op:.62; }
+.sgs-sierpe:nth-child(2)  { --p-tam:34px; --p-dur:16s; --p-delay:-5s;  left:30%; top:0%;  --p-x:-14px; --p-y:-170px; --p-rot:41deg;  --p-op:.58; }
+.sgs-sierpe:nth-child(3)  { --p-tam:28px; --p-dur:12s; --p-delay:-3s;  left:40%; top:1%;  --p-x:20px;  --p-y:-140px; --p-rot:-12deg; --p-op:.60; }
+.sgs-sierpe:nth-child(4)  { --p-tam:44px; --p-dur:18s; --p-delay:-7s;  left:47%; top:5%;  --p-x:-18px; --p-y:-190px; --p-rot:63deg;  --p-op:.78; }
+.sgs-sierpe:nth-child(5)  { --p-tam:32px; --p-dur:14s; --p-delay:-4s;  left:54%; top:1%;  --p-x:22px;  --p-y:-160px; --p-rot:28deg;  --p-op:.70; }
+.sgs-sierpe:nth-child(6)  { --p-tam:50px; --p-dur:20s; --p-delay:-9s;  left:60%; top:8%;  --p-x:-24px; --p-y:-210px; --p-rot:-24deg; --p-op:.82; }
+.sgs-sierpe:nth-child(7)  { --p-tam:36px; --p-dur:15s; --p-delay:-6s;  left:66%; top:3%;  --p-x:18px;  --p-y:-170px; --p-rot:41deg;  --p-op:.74; }
+.sgs-sierpe:nth-child(8)  { --p-tam:54px; --p-dur:22s; --p-delay:-11s; left:72%; top:7%;  --p-x:-20px; --p-y:-230px; --p-rot:0deg;   --p-op:.86; }
+.sgs-sierpe:nth-child(9)  { --p-tam:30px; --p-dur:13s; --p-delay:-1s;  left:78%; top:2%;  --p-x:16px;  --p-y:-150px; --p-rot:-38deg; --p-op:.68; }
+.sgs-sierpe:nth-child(10) { --p-tam:46px; --p-dur:19s; --p-delay:-8s;  left:84%; top:6%;  --p-x:-22px; --p-y:-200px; --p-rot:28deg;  --p-op:.80; }
+
+/* margen izquierdo */
+.sgs-sierpe:nth-child(11) { --p-tam:50px; --p-dur:20s; --p-delay:-12s; left:1%;  top:20%; --p-x:24px;  --p-y:-220px; --p-rot:63deg;  --p-op:.80; }
+.sgs-sierpe:nth-child(12) { --p-tam:32px; --p-dur:15s; --p-delay:-4s;  left:6%;  top:33%; --p-x:-16px; --p-y:-170px; --p-rot:-24deg; --p-op:.70; }
+.sgs-sierpe:nth-child(13) { --p-tam:62px; --p-dur:24s; --p-delay:-15s; left:2%;  top:46%; --p-x:20px;  --p-y:-260px; --p-rot:41deg;  --p-op:.88; }
+.sgs-sierpe:nth-child(14) { --p-tam:36px; --p-dur:16s; --p-delay:-6s;  left:7%;  top:60%; --p-x:-18px; --p-y:-180px; --p-rot:28deg;  --p-op:.72; }
+.sgs-sierpe:nth-child(15) { --p-tam:54px; --p-dur:22s; --p-delay:-10s; left:1%;  top:74%; --p-x:22px;  --p-y:-240px; --p-rot:-38deg; --p-op:.84; }
+.sgs-sierpe:nth-child(16) { --p-tam:40px; --p-dur:18s; --p-delay:-7s;  left:5%;  top:88%; --p-x:-20px; --p-y:-200px; --p-rot:0deg;   --p-op:.76; }
+
+/* margen derecho */
+.sgs-sierpe:nth-child(17) { --p-tam:46px; --p-dur:19s; --p-delay:-9s;  left:93%; top:16%; --p-x:-22px; --p-y:-210px; --p-rot:41deg;  --p-op:.80; }
+.sgs-sierpe:nth-child(18) { --p-tam:30px; --p-dur:14s; --p-delay:-3s;  left:96%; top:30%; --p-x:16px;  --p-y:-160px; --p-rot:-12deg; --p-op:.66; }
+.sgs-sierpe:nth-child(19) { --p-tam:64px; --p-dur:25s; --p-delay:-16s; left:91%; top:44%; --p-x:-26px; --p-y:-270px; --p-rot:63deg;  --p-op:.88; }
+.sgs-sierpe:nth-child(20) { --p-tam:34px; --p-dur:15s; --p-delay:-5s;  left:95%; top:58%; --p-x:18px;  --p-y:-170px; --p-rot:28deg;  --p-op:.70; }
+.sgs-sierpe:nth-child(21) { --p-tam:52px; --p-dur:21s; --p-delay:-13s; left:92%; top:72%; --p-x:-20px; --p-y:-230px; --p-rot:-24deg; --p-op:.84; }
+.sgs-sierpe:nth-child(22) { --p-tam:38px; --p-dur:17s; --p-delay:-6s;  left:96%; top:86%; --p-x:20px;  --p-y:-190px; --p-rot:41deg;  --p-op:.74; }
+
+/* banda del pie */
+.sgs-sierpe:nth-child(23) { --p-tam:30px; --p-dur:16s; --p-delay:-8s;  left:12%; top:0%;  --p-x:-16px; --p-y:-180px; --p-rot:-38deg; --p-op:.64; }
+.sgs-sierpe:nth-child(24) { --p-tam:26px; --p-dur:14s; --p-delay:-2s;  left:60%; top:96%; --p-x:18px;  --p-y:-160px; --p-rot:28deg;  --p-op:.60; }
 
 /* --------------------------------------------------------------------------
    4 · LOGO
@@ -1472,7 +1492,7 @@ document.getElementById("telon").innerHTML =
   '<div class="sgs-telon__masa"></div>'
   + '<div class="sgs-telon__franja"></div>'.repeat(3);
 document.getElementById("sierpes").innerHTML =
-  '<span class="sgs-sierpe"></span>'.repeat(18);
+  '<span class="sgs-sierpe"></span>'.repeat(24);
 
 /* ===== ACCESOS ==========================================================
    [ nombre, origen, icono, url ]  ← poné acá tus URL reales
