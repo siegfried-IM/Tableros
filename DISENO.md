@@ -299,6 +299,16 @@ El origen es sólo texto: se muestra en versalitas debajo del nombre y no cambia
 ningún estilo — la chapa del icono es siempre la misma (26 px, fondo `#F2E7E9`,
 trazo en `--sgs-bordo-700`). Agregar un acceso es **una línea**.
 
+Los campos se inyectan como HTML, no como texto plano — así entra el SVG del
+icono. Eso permite acentuar parte de un nombre, como el `+` de ABC:
+
+```js
+["ABC <span class=\"acceso__mas\">+</span>", "Siegfried · Interno", "<svg …>", "https://…"]
+```
+
+Con la contrapartida de siempre: los nombres vienen de este archivo y de nadie
+más. Si algún día el array se llenara desde una fuente externa, hay que escapar.
+
 ---
 
 ## Verificar antes de publicar

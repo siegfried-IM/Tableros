@@ -1423,6 +1423,9 @@ body { margin: 0; color: #2C2426; font-family: var(--serif); -webkit-font-smooth
               background: #F2E7E9; color: var(--sgs-bordo-700); border-radius: 7px;
               font-size: 12px; }
 .acceso__n { font-family: var(--sans); font-size: .78rem; font-weight: 600; display: block; }
+/* El «+» de ABC + va en el bordó de marca: es el único acento de color dentro
+   de la tarjeta, así que alcanza con el token, sin tocar el peso ni el tamaño. */
+.acceso__mas { color: var(--sgs-bordo-700); font-weight: 700; }
 .acceso__o { font-family: var(--sans); font-size: .5rem; font-weight: 600; letter-spacing: .11em;
              text-transform: uppercase; color: #A2989A; display: block; margin-top: 1px; }
 .acceso__f { margin-left: auto; color: #C0B4B6; font-size: 11px; }
@@ -1504,7 +1507,7 @@ document.getElementById("sierpes").innerHTML =
 var PERFILES = [
   { n: "01", titulo: "Promoción", rol: "Gerente regional y jefes de equipo", abierto: true,
     accesos: [
-      ["ABC PLUS", "Siegfried · Interno","<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"3\"/><rect x=\"3\" y=\"11\" width=\"13\" height=\"3\"/><rect x=\"3\" y=\"18\" width=\"8\" height=\"3\"/></svg>", "https://abc-dashboard-6p1.pages.dev/"],
+      ["ABC <span class=\"acceso__mas\">+</span>", "Siegfried · Interno","<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"3\"/><rect x=\"3\" y=\"11\" width=\"13\" height=\"3\"/><rect x=\"3\" y=\"18\" width=\"8\" height=\"3\"/></svg>", "https://abc-dashboard-6p1.pages.dev/"],
       ["TGP", "Siegfried · Interno", "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"10\" width=\"4\" height=\"11\"/><rect x=\"10\" y=\"4\" width=\"4\" height=\"17\"/><rect x=\"17\" y=\"13\" width=\"4\" height=\"8\"/></svg>", "https://tgp-958.pages.dev/"],
       ["KPI Promoción", "Siegfried · Interno", "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"3 17 9 11 13 15 21 7\"/><polyline points=\"14 7 21 7 21 14\"/></svg>", "https://kpis-promocion.pages.dev/"],
       ["Bonos PAP", "Siegfried · Interno", "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><polyline points=\"12 7 12 12 15 15\"/></svg>", "https://bonos-pap.pages.dev/"],
