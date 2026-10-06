@@ -1025,15 +1025,30 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
 }
 .sgs-sierpe::before {
   content: ""; position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M7 28 C7 20 15 22 16.5 16 C18 10 25 12 25 4%22 fill=%22none%22 stroke=%22%2523ffffff%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M7 28 C7 20 15 22 16.5 16 C18 10 25 12 25 4%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: center; background-size: contain;
   transform: rotate(var(--p-rot, 0deg));
   /* La opacidad la maneja sola la animación vía --p-op: si además se atenúa
      acá, los dos valores se multiplican y el campo desaparece. */
   opacity: 1;
 }
-/* Curvatura alternada: el campo no se lee como un solo sello repetido. */
-.sgs-sierpe:nth-child(3n)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M5 27 C5 17 13 21 17 15 C21 9 27 13 28 5%22 fill=%22none%22 stroke=%22%2523ffffff%22 stroke-width=%222.1%22 stroke-linecap=%22round%22/%3E%3C/svg%3E"); }
+/* Siete figuras rotando cada 7 partículas: dos curvaturas de la S del isotipo
+   más cinco del oficio farmacéutico, las mismas que usa Status de Proyectos.
+   La variedad es del RUBRO, no de la MARCA: el isotipo no se repite como trama
+   —eso lo diluye— pero una cápsula o un matraz se pueden repetir sin problema.
+   Tampoco pisan el vocabulario de los iconos de las tarjetas, que son barras,
+   tendencias y grillas. */
+.sgs-sierpe:nth-child(7n+4)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M5 27 C5 17 13 21 17 15 C21 9 27 13 28 5%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%222.1%22 stroke-linecap=%22round%22/%3E%3C/svg%3E"); }
+/* cápsula */
+.sgs-sierpe:nth-child(7n+2)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round'%3E%3Crect x='5' y='11.5' width='22' height='9' rx='4.5'/%3E%3Cpath d='M16 11.5v9'/%3E%3C/g%3E%3C/svg%3E"); }
+/* molécula */
+.sgs-sierpe:nth-child(7n+3)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 7.5l6.9 4v8l-6.9 4-6.9-4v-8z'/%3E%3Cpath d='M20.9 11.5l4.6-2.7M14 23.5v4'/%3E%3Ccircle cx='27.2' cy='7.8' r='1.9'/%3E%3C/g%3E%3C/svg%3E"); }
+/* matraz */
+.sgs-sierpe:nth-child(7n+5)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.5 4.5h7M14 4.5v8l-6.6 11.4A2.4 2.4 0 0 0 9.5 27.5h13a2.4 2.4 0 0 0 2.1-3.6L18 12.5v-8'/%3E%3Cpath d='M10.4 19.5h11.2'/%3E%3C/g%3E%3C/svg%3E"); }
+/* comprimido */
+.sgs-sierpe:nth-child(7n+6)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='16' cy='16' r='9.5'/%3E%3Cpath d='M10.5 16h11'/%3E%3C/g%3E%3C/svg%3E"); }
+/* chispa */
+.sgs-sierpe:nth-child(7n)::before   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4c.9 6.6 3.4 9.1 12 12-8.6 2.9-11.1 5.4-12 12-.9-6.6-3.4-9.1-12-12 8.6-2.9 11.1-5.4 12-12z' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E"); }
 
 /* Fundido en los dos extremos del ciclo. Sin esto el salto del loop se ve,
    y se ve más cuanto más opaca es la partícula. */

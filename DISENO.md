@@ -124,10 +124,20 @@ El orden lo pone `--t` inline, así que **la coreografía se lee mirando el HTML
 
 ### El campo de partículas
 
-Veinticuatro curvas blancas a la deriva. Es **la S del isotipo como geometría
-propia**, no el arte oficial repetido: la serpiente es el elemento central de la
-marca, no un motivo de trama, y a 14 px una serpiente reconocible se lee como un
-pelo en la pantalla. Una curva se lee como curva a cualquier tamaño.
+Veinticuatro figuras blancas a la deriva, rotando **siete formas** cada siete
+partículas: dos curvaturas de la S del isotipo y cinco del oficio farmacéutico
+—cápsula, molécula, matraz, comprimido y chispa, las mismas que usa *Status de
+Proyectos*—.
+
+La curva es **la S del isotipo como geometría propia**, no el arte oficial
+repetido: la serpiente es el elemento central de la marca, no un motivo de trama,
+y a 14 px una serpiente reconocible se lee como un pelo en la pantalla.
+
+> **El criterio que permite variedad sin diluir la marca:** las figuras que se
+> repiten son del **rubro**, no de la **marca**. Una cápsula o un matraz se pueden
+> repetir veinte veces sin que nada se gaste; el isotipo no. De paso, ese
+> vocabulario no pisa el de los iconos de las tarjetas, que son barras, tendencias
+> y grillas.
 
 ```css
 .sgs-sierpe {
@@ -195,7 +205,39 @@ la animación no llegue a correr.
 
 Todo lo de abajo se descubrió en producción, no en la teoría.
 
-### 1. Las opacidades se multiplican
+### 1. Un data URI doble-codificado carga pero no dibuja nada
+
+El caso que más caro salió. El SVG de las partículas llevaba
+`stroke=%22%2523ffffff%22`: al decodificar queda `stroke="%23ffffff"`, que **no
+es un color válido**. El SVG se parsea sin errores, la imagen carga, `onerror`
+nunca dispara — y el trazo simplemente no se pinta. Un rectángulo transparente
+que se mueve perfecto.
+
+Lo insidioso es que **todas las comprobaciones habituales dan verde**:
+`getAnimations()` devuelve 24, `playState` dice `running`, el `transform`
+computado avanza, la opacidad es correcta. Tres diagnósticos seguidos
+—opacidad multiplicada, `prefers-reduced-motion`, velocidad— encontraron
+problemas reales y ninguno era el que impedía ver el campo.
+
+> **Regla:** verificar que la figura **pinte píxeles**, no que el elemento exista.
+> Se dibuja el data URI en un `<canvas>` y se cuentan los píxeles con alfa > 0:
+>
+> ```js
+> const img = new Image();
+> img.onload = () => {
+>   const c = document.createElement("canvas"); c.width = c.height = 64;
+>   const x = c.getContext("2d"); x.drawImage(img, 0, 0, 64, 64);
+>   const d = x.getImageData(0, 0, 64, 64).data;
+>   let n = 0; for (let i = 0; i < d.length; i += 4) if (d[i+3] > 10) n++;
+>   console.log("pixeles pintados:", n);   // 0 = la figura es invisible
+> };
+> img.src = uri;
+> ```
+>
+> Dentro de `url("…")` el `#` se escribe `%23` **una sola vez**. `%2523` es el `%`
+> escapado de más, y es lo que rompe el color.
+
+### 2. Las opacidades se multiplican
 
 Un `::before` con `opacity: .34` dentro de un elemento cuya animación oscila entre
 `.35` y `.62` da un **14 % efectivo**. El campo de partículas era literalmente
@@ -204,7 +246,7 @@ invisible por esto.
 > **Regla:** la opacidad la maneja **una sola capa**. Si el keyframe la anima, el
 > `::before` va en `opacity: 1`.
 
-### 2. `prefers-reduced-motion` apaga la página entera en equipos corporativos
+### 3. `prefers-reduced-motion` apaga la página entera en equipos corporativos
 
 Windows 11 trae *Configuración → Accesibilidad → Efectos visuales → Efectos de
 animación* **desactivado** en muchos equipos de empresa. Cuando lo está, el
@@ -219,7 +261,7 @@ queda completamente muerta —logo incluido— y el síntoma es desconcertante:
 > (`html.sgs-no-motion`), para quien de verdad lo necesite — que existe: hay
 > gente con sensibilidad vestibular para quien esto no es cosmético.
 
-### 3. Hay una velocidad mínima para que algo se lea como movimiento
+### 4. Hay una velocidad mínima para que algo se lea como movimiento
 
 Los ciclos originales del kit (12–25 s) daban **~10 px/s**. Técnicamente se
 movían; a la vista estaban congeladas. Por debajo de unos 15 px/s el ojo no
@@ -229,7 +271,7 @@ registra deriva sin fijar la vista a propósito.
 > Que `getAnimations()` devuelva 24 no dice nada sobre si se ve algo. Para deriva
 > ambiente, apuntar a 30–50 px/s.
 
-### 4. Ralentizar no es atenuar
+### 5. Ralentizar no es atenuar
 
 El intento de "respetar" `prefers-reduced-motion` multiplicando la duración por
 2,5 produjo el peor resultado posible: recorridos de 30–60 s, o sea ~4 px/s. Una
@@ -238,7 +280,7 @@ mueve, que es exactamente lo contrario de lo buscado.
 
 > **Regla:** para atenuar, bajar **opacidad** o **cantidad**. La velocidad se deja.
 
-### 5. `ease-in-out` arruina los loops de deriva
+### 6. `ease-in-out` arruina los loops de deriva
 
 Frena la partícula justo en las dos puntas del ciclo, que es cuando el ojo la está
 seguiendo. El campo se lee como si titilara en vez de derivar.
@@ -246,7 +288,7 @@ seguiendo. El campo se lee como si titilara en vez de derivar.
 > **Regla:** deriva continua → `linear`. `ease-in-out` es para gestos con
 > principio y fin.
 
-### 6. Un loop de posición tiene que fundir a cero en las dos puntas
+### 7. Un loop de posición tiene que fundir a cero en las dos puntas
 
 Si el keyframe termina en `opacity: .42` y vuelve a empezar en otra posición, el
 salto se ve. Con partículas tenues pasa desapercibido; apenas se las hace
@@ -254,7 +296,7 @@ visibles, aparece.
 
 > **Regla:** `0%` y `100%` en `opacity: 0`, con mesetas al 14 % y 78 %.
 
-### 7. Un contenedor opaco ancho se come el fondo
+### 8. Un contenedor opaco ancho se come el fondo
 
 Al ensanchar la hoja de 1120 a 1500 px para compactar, pasó a cubrir del 12 % al
 88 % del ancho — y las partículas estaban repartidas entre el 6 % y el 92 %. De 18,
@@ -264,14 +306,14 @@ quedaban visibles unas 5.
 > márgenes, pie) y verificarlo por geometría, comparando el rectángulo de cada
 > partícula contra el del contenedor.
 
-### 8. Los glifos Unicode geométricos no son confiables
+### 9. Los glifos Unicode geométricos no son confiables
 
 La plantilla original usaba `▤ ◫ ⌗ ◹` como iconos. Dependen de las fuentes del
 sistema y pueden salir como cuadrito vacío en otra máquina.
 
 > **Regla:** SVG inline. Se ve igual en todos lados y pesa lo mismo.
 
-### 9. Verificar lo que la plantilla no trae
+### 10. Verificar lo que la plantilla no trae
 
 La plantilla del kit no incluía `target="_blank"` ni `rel="noopener"` en los
 accesos. Si el hub anterior los tenía, migrar sin revisarlo es una regresión
