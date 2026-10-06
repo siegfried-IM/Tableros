@@ -124,63 +124,31 @@ El orden lo pone `--t` inline, así que **la coreografía se lee mirando el HTML
 
 ### El campo de partículas
 
-Veinticuatro figuras blancas a la deriva, todas de la marca: el isotipo —la copa
-de Higía, la serpiente en S enroscada en el bol— en **cuatro niveles de detalle**.
+Veinticuatro partículas a la deriva: **tres llevan el isotipo oficial** y las
+otras veintiuna, la pura curva de la S. El logo aparece de vez en cuando, no es
+la trama — el fondo tiene que ser un campo, no un muestrario.
 
-El problema de usar el isotipo como campo es real: repetir el arte completo lo
-diluye, y a 26 px se empasta (tiene 23 % de carga de trazo contra 9 % de una curva
-suelta). Pero la respuesta no es renunciar a la marca: es **graduar el detalle
-según el tamaño** de cada partícula.
+**El arte oficial necesita invertirse.** El isotipo es monocromo `#95232C` con la
+serpiente en **hueco**, no en blanco: sobre el telón bordó sería invisible, tinta
+bordó sobre fondo bordó y los huecos dejando ver más bordó. Se resuelve con
+`filter: brightness(0) invert(1)`, que lo pasa a blanco y **conserva los huecos
+intactos** (verificado: 65 % de tinta → 65 % de blanco, 35 % transparente sin
+tocar). Es el arte oficial, no un redibujo.
 
-| Nivel | Figura | Partículas | Tamaños |
-|---|---|---|---|
-| Completo | serpiente + bol | 9 | 46–64 px |
-| Medio | serpiente con cabeza | 5 | 36–44 px |
-| Reducido | el bol solo | 6 | 30–34 px |
-| Mínimo | la pura curva de la S | 4 | 26–30 px |
+Dos reglas que el logo impone y una curva abstracta no:
 
-Las grandes llevan el isotipo entero, donde hay lugar para leerlo; hacia abajo se
-va despojando hasta quedar la curva sola. El campo se lee como una sola familia
-—todo es la misma S— sin que ninguna pieza quede empastada.
+- **No rota.** El isotipo tiene orientación. Las partículas del campo giran hasta
+  63°, y una copa rotada 63° deja de leerse como copa: parece una hoja. Las que
+  llevan el arte fijan `--p-rot: 0deg`.
+- **Va más tenue.** Cubre el 65 % de su cuadro contra el 9 % de un trazo suelto, así
+  que a igual opacidad pesaría siete veces más. Va en `--p-op: .38` contra
+  `.58–.88` del resto.
 
-> **El criterio general:** cuando una marca es demasiado detallada para repetirse,
-> no se la reemplaza por iconografía genérica del rubro —eso hace que el producto
-> se parezca a cualquier otro del rubro, que fue exactamente el resultado de
-> probar con cápsulas y matraces—. Se la **destila**: se le quitan niveles de
-> detalle hasta que sobrevive el gesto que la identifica.
-
-```css
-.sgs-sierpe {
-  position: absolute;
-  width: var(--p-tam, 24px); height: var(--p-tam, 24px);
-  animation: sgs-p-deriva calc(var(--p-dur, 18s) * .38) linear infinite;
-  animation-delay: var(--p-delay, 0s);   /* negativo: desfasa el arranque */
-  transform: translateZ(0);
-}
-.sgs-sierpe::before {
-  content: ""; position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml,…");  /* curva blanca */
-  background-size: contain;
-  transform: rotate(var(--p-rot, 0deg));
-  opacity: 1;                            /* ← la opacidad la maneja el keyframe */
-}
-
-@keyframes sgs-p-deriva {
-  0%   { transform: translateZ(0) scale(.92); opacity: 0; }
-  14%  { opacity: var(--p-op, .72); }
-  78%  { opacity: var(--p-op, .72); }
-  100% { transform: translate3d(calc(var(--p-x,20px) * 2.2),
-                                calc(var(--p-y,-200px) * 1.5), 0)
-                    scale(1.07); opacity: 0; }
-}
-```
-
-Cada partícula lleva su tamaño, duración, rotación, recorrido y opacidad en
-custom properties, y un **delay negativo** para que cada una arranque en un punto
-distinto de su ciclo: así el campo nunca late sincronizado.
-
-Valores que funcionan: tamaños 24–66 px, opacidad 0,58–0,88, ciclos de 4,6 a 9,5 s,
-recorridos de 215–290 px. Eso da **~42 px/s**, que es el número que importa.
+> **Lo que no funcionó, por si tienta:** reemplazar la marca por iconografía
+> genérica del rubro —cápsula, matraz, molécula— hace que el producto se parezca a
+> cualquier otro del rubro. Y redibujar el isotipo a mano como trazo tampoco: sin
+> los huecos y la proporción del original, se lee como un garabato. Si se quiere
+> la marca, va la marca.
 
 ### El logo
 
