@@ -1032,23 +1032,37 @@ html.sgs-no-motion .sgs-pulso__punto::after { animation: none !important; opacit
      acá, los dos valores se multiplican y el campo desaparece. */
   opacity: 1;
 }
-/* Siete figuras rotando cada 7 partículas: dos curvaturas de la S del isotipo
-   más cinco del oficio farmacéutico, las mismas que usa Status de Proyectos.
-   La variedad es del RUBRO, no de la MARCA: el isotipo no se repite como trama
-   —eso lo diluye— pero una cápsula o un matraz se pueden repetir sin problema.
-   Tampoco pisan el vocabulario de los iconos de las tarjetas, que son barras,
-   tendencias y grillas. */
-.sgs-sierpe:nth-child(7n+4)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E %3Cpath d=%22M5 27 C5 17 13 21 17 15 C21 9 27 13 28 5%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%222.1%22 stroke-linecap=%22round%22/%3E%3C/svg%3E"); }
-/* cápsula */
-.sgs-sierpe:nth-child(7n+2)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round'%3E%3Crect x='5' y='11.5' width='22' height='9' rx='4.5'/%3E%3Cpath d='M16 11.5v9'/%3E%3C/g%3E%3C/svg%3E"); }
-/* molécula */
-.sgs-sierpe:nth-child(7n+3)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 7.5l6.9 4v8l-6.9 4-6.9-4v-8z'/%3E%3Cpath d='M20.9 11.5l4.6-2.7M14 23.5v4'/%3E%3Ccircle cx='27.2' cy='7.8' r='1.9'/%3E%3C/g%3E%3C/svg%3E"); }
-/* matraz */
-.sgs-sierpe:nth-child(7n+5)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12.5 4.5h7M14 4.5v8l-6.6 11.4A2.4 2.4 0 0 0 9.5 27.5h13a2.4 2.4 0 0 0 2.1-3.6L18 12.5v-8'/%3E%3Cpath d='M10.4 19.5h11.2'/%3E%3C/g%3E%3C/svg%3E"); }
-/* comprimido */
-.sgs-sierpe:nth-child(7n+6)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='16' cy='16' r='9.5'/%3E%3Cpath d='M10.5 16h11'/%3E%3C/g%3E%3C/svg%3E"); }
-/* chispa */
-.sgs-sierpe:nth-child(7n)::before   { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4c.9 6.6 3.4 9.1 12 12-8.6 2.9-11.1 5.4-12 12-.9-6.6-3.4-9.1-12-12 8.6-2.9 11.1-5.4 12-12z' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+/* El isotipo es la copa de Higía: la serpiente en S enroscada en el bol. Repetir
+   el arte completo como trama lo diluye y a 26 px se empasta —tiene 23% de carga
+   de trazo contra 9% de una curva suelta—. La salida es graduar el DETALLE según
+   el TAMAÑO de cada partícula: el isotipo entero sólo donde hay lugar para leerlo,
+   y hacia abajo se va despojando hasta quedar la pura curva de la S. */
+
+/* isotipo completo · las grandes (46-64 px) */
+.sgs-sierpe:nth-child(6)::before,
+.sgs-sierpe:nth-child(8)::before,
+.sgs-sierpe:nth-child(10)::before,
+.sgs-sierpe:nth-child(11)::before,
+.sgs-sierpe:nth-child(13)::before,
+.sgs-sierpe:nth-child(15)::before,
+.sgs-sierpe:nth-child(17)::before,
+.sgs-sierpe:nth-child(19)::before,
+.sgs-sierpe:nth-child(21)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 14.5 H27.5'/%3E%3Cpath d='M4.5 14.5 A11.5 11.5 0 0 0 27.5 14.5'/%3E%3Cpath d='M21.6 6.2 C13.8 5.2 11.2 10.8 15.8 13.8 C20.8 17 21.2 20.8 17.2 22.3 C14 23.3 11.6 21.8 11.4 20'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* serpiente con cabeza · las medianas (36-44 px) */
+.sgs-sierpe:nth-child(4)::before,
+.sgs-sierpe:nth-child(7)::before,
+.sgs-sierpe:nth-child(14)::before,
+.sgs-sierpe:nth-child(16)::before,
+.sgs-sierpe:nth-child(22)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21.6 6.2 C13.8 5.2 11.2 10.8 15.8 13.8 C20.8 17 21.2 20.8 17.2 22.3 C14 23.3 11.6 21.8 11.4 20'/%3E%3Ccircle cx='21.9' cy='6.1' r='0.9' fill='%23ffffff' stroke='none'/%3E%3C/g%3E%3C/svg%3E"); }
+
+/* el bol solo · las chicas (30-34 px), donde la S ya no se leería */
+.sgs-sierpe:nth-child(2)::before,
+.sgs-sierpe:nth-child(5)::before,
+.sgs-sierpe:nth-child(9)::before,
+.sgs-sierpe:nth-child(12)::before,
+.sgs-sierpe:nth-child(18)::before,
+.sgs-sierpe:nth-child(20)::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 14.5 H27.5'/%3E%3Cpath d='M4.5 14.5 A11.5 11.5 0 0 0 27.5 14.5'/%3E%3C/g%3E%3C/svg%3E"); }
 
 /* Fundido en los dos extremos del ciclo. Sin esto el salto del loop se ve,
    y se ve más cuanto más opaca es la partícula. */

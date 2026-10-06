@@ -124,20 +124,30 @@ El orden lo pone `--t` inline, así que **la coreografía se lee mirando el HTML
 
 ### El campo de partículas
 
-Veinticuatro figuras blancas a la deriva, rotando **siete formas** cada siete
-partículas: dos curvaturas de la S del isotipo y cinco del oficio farmacéutico
-—cápsula, molécula, matraz, comprimido y chispa, las mismas que usa *Status de
-Proyectos*—.
+Veinticuatro figuras blancas a la deriva, todas de la marca: el isotipo —la copa
+de Higía, la serpiente en S enroscada en el bol— en **cuatro niveles de detalle**.
 
-La curva es **la S del isotipo como geometría propia**, no el arte oficial
-repetido: la serpiente es el elemento central de la marca, no un motivo de trama,
-y a 14 px una serpiente reconocible se lee como un pelo en la pantalla.
+El problema de usar el isotipo como campo es real: repetir el arte completo lo
+diluye, y a 26 px se empasta (tiene 23 % de carga de trazo contra 9 % de una curva
+suelta). Pero la respuesta no es renunciar a la marca: es **graduar el detalle
+según el tamaño** de cada partícula.
 
-> **El criterio que permite variedad sin diluir la marca:** las figuras que se
-> repiten son del **rubro**, no de la **marca**. Una cápsula o un matraz se pueden
-> repetir veinte veces sin que nada se gaste; el isotipo no. De paso, ese
-> vocabulario no pisa el de los iconos de las tarjetas, que son barras, tendencias
-> y grillas.
+| Nivel | Figura | Partículas | Tamaños |
+|---|---|---|---|
+| Completo | serpiente + bol | 9 | 46–64 px |
+| Medio | serpiente con cabeza | 5 | 36–44 px |
+| Reducido | el bol solo | 6 | 30–34 px |
+| Mínimo | la pura curva de la S | 4 | 26–30 px |
+
+Las grandes llevan el isotipo entero, donde hay lugar para leerlo; hacia abajo se
+va despojando hasta quedar la curva sola. El campo se lee como una sola familia
+—todo es la misma S— sin que ninguna pieza quede empastada.
+
+> **El criterio general:** cuando una marca es demasiado detallada para repetirse,
+> no se la reemplaza por iconografía genérica del rubro —eso hace que el producto
+> se parezca a cualquier otro del rubro, que fue exactamente el resultado de
+> probar con cápsulas y matraces—. Se la **destila**: se le quitan niveles de
+> detalle hasta que sobrevive el gesto que la identifica.
 
 ```css
 .sgs-sierpe {
