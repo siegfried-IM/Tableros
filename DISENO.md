@@ -124,31 +124,22 @@ El orden lo pone `--t` inline, así que **la coreografía se lee mirando el HTML
 
 ### El campo de partículas
 
-Veinticuatro partículas a la deriva: **tres llevan el isotipo oficial** y las
-otras veintiuna, la pura curva de la S. El logo aparece de vez en cuando, no es
-la trama — el fondo tiene que ser un campo, no un muestrario.
+**Doce** curvas blancas a la deriva, cuatro por banda: la cabecera y los dos
+márgenes. Es la S del isotipo como geometría propia, no el arte oficial repetido.
 
-**El arte oficial necesita invertirse.** El isotipo es monocromo `#95232C` con la
-serpiente en **hueco**, no en blanco: sobre el telón bordó sería invisible, tinta
-bordó sobre fondo bordó y los huecos dejando ver más bordó. Se resuelve con
-`filter: brightness(0) invert(1)`, que lo pasa a blanco y **conserva los huecos
-intactos** (verificado: 65 % de tinta → 65 % de blanco, 35 % transparente sin
-tocar). Es el arte oficial, no un redibujo.
+Se probaron dos caminos que no funcionaron, por si tientan:
 
-Dos reglas que el logo impone y una curva abstracta no:
+- **Iconografía genérica del rubro** (cápsula, matraz, molécula) hace que el
+  producto se parezca a cualquier otro del rubro, no a Siegfried.
+- **El isotipo oficial como partícula**, aun con pocas apariciones y bien
+  resuelto técnicamente —hay que invertirlo con `brightness(0) invert(1)` porque
+  es tinta bordó con la serpiente en hueco, y hay que fijarle `--p-rot: 0deg`
+  porque girado deja de leerse— carga demasiado un fondo. El logo ya está en la
+  cabecera, que es su lugar.
 
-- **No rota.** El isotipo tiene orientación. Las partículas del campo giran hasta
-  63°, y una copa rotada 63° deja de leerse como copa: parece una hoja. Las que
-  llevan el arte fijan `--p-rot: 0deg`.
-- **Va más tenue.** Cubre el 65 % de su cuadro contra el 9 % de un trazo suelto, así
-  que a igual opacidad pesaría siete veces más. Va en `--p-op: .38` contra
-  `.58–.88` del resto.
-
-> **Lo que no funcionó, por si tienta:** reemplazar la marca por iconografía
-> genérica del rubro —cápsula, matraz, molécula— hace que el producto se parezca a
-> cualquier otro del rubro. Y redibujar el isotipo a mano como trazo tampoco: sin
-> los huecos y la proporción del original, se lee como un garabato. Si se quiere
-> la marca, va la marca.
+> Lo que queda es lo que un fondo tiene que ser: **pocas líneas, abstractas, que
+> no compitan con nada**. La marca se afirma en la chapa de la cabecera y en el
+> bordó del telón; el campo sólo da movimiento.
 
 ### El logo
 
