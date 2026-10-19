@@ -124,7 +124,7 @@ El orden lo pone `--t` inline, así que **la coreografía se lee mirando el HTML
 
 ### El campo de partículas
 
-**Doce** curvas blancas a la deriva, cuatro por banda: la cabecera y los dos
+**Seis** curvas blancas a la deriva, dos por banda: la cabecera y los dos
 márgenes. Es la S del isotipo como geometría propia, no el arte oficial repetido.
 
 Se probaron dos caminos que no funcionaron, por si tientan:
